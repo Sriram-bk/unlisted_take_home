@@ -16,7 +16,7 @@ number_mappings = {
 
 
 def convert_number(num_match: tuple):
-    """Takes a regex match for a number and converts it to an inte
+    """Takes a regex match for a number and converts it to an int
 
     Args:
         num_match (tuple): A regex match tuple
