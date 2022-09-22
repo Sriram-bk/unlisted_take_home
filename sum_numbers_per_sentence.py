@@ -15,7 +15,15 @@ number_mappings = {
 }
 
 
-def convert_number(num_match: str):
+def convert_number(num_match: tuple):
+    """Takes a regex match for a number and converts it to an inte
+
+    Args:
+        num_match (tuple): A regex match tuple
+
+    Returns:
+        int: the number in integer form
+    """
     number = int(number_mappings.get(num_match[2], num_match[2]))
     minus_val = num_match[0].strip()
     if len(minus_val) == 0:
@@ -28,7 +36,17 @@ def convert_number(num_match: str):
 
 
 def extract_and_sum_numbers(sentence: str):
+    """Extracts and sums the numbers in a given sentence
+
+    Args:
+        sentence (str): A string representing a single sentence
+
+    Returns:
+        int: The sum of all the numbers in the given sentence
+    """
+    # Find all the numbers in the sentence that are digits
     extracted_numbers = re.findall(r"(\bminus )?(- ?)?(\d+)\b", sentence)
+    # Find all the numbers in the sentence that are spelled out
     extracted_spelled_numbers = re.findall(
         r"(\bminus )?(- ?)?\b(one|two|three|four|five|six|seven|eight|nine|ten)\b",
         sentence,
@@ -41,6 +59,7 @@ def extract_and_sum_numbers(sentence: str):
 
 
 def sum_numbers_per_sentence(s: str):
+    # Break an input string into its component sentences
     sentences = tokenize.sent_tokenize(s)
 
     return list(

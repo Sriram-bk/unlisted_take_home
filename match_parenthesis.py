@@ -1,11 +1,12 @@
 import re
-from nltk import download, tokenize
+from nltk import tokenize
 
 
 def match_parens(sentence: str):
     open_parens = re.findall(r"\(", sentence)
     close_parens = re.findall(r"\)", sentence)
 
+    # Take the difference to find any unmatched open parenthesis
     diff = len(open_parens) - len(close_parens)
 
     if diff > 0:
